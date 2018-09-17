@@ -31,19 +31,19 @@ using static System.StringComparer;
 
 namespace Microsoft.Alm.Cli.Test
 {
-    public class AzureDevOpsLogonTests : AzureDevOps.Authentication.Test.UnitTestBase
+    public class VstsLogonTests : AzureDevOps.Authentication.Test.UnitTestBase
     {
         private static readonly Encoding Utf8 = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
-        public AzureDevOpsLogonTests(Xunit.Abstractions.ITestOutputHelper output)
+        public VstsLogonTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(XunitHelper.Convert(output))
-        { }
+        { TestMode = Authentication.Test.UnitTestMode.Capture;  }
 
         [Fact]
         public void InteractiveAadLogon_Canceled()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/microsoft-git-tools";
+            const string host = "microsoft-git-tools.visualstudio.com";
 
             InitializeTest();
 
@@ -120,7 +120,7 @@ namespace Microsoft.Alm.Cli.Test
         public void InteractiveMsaLogon_Canceled()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/gistofj";
+            const string host = "dev-x.visualstudio.com";
 
             InitializeTest();
 
@@ -197,7 +197,7 @@ namespace Microsoft.Alm.Cli.Test
         public void InteractiveAadLogon_Success()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/microsoft-git-tools";
+            const string host = "microsoft-git-tools.visualstudio.com";
 
             InitializeTest();
 
@@ -243,7 +243,7 @@ namespace Microsoft.Alm.Cli.Test
         public void InteractiveAadLogonWithRevokedCredentials_Success()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/microsoft-git-tools";
+            const string host = "microsoft-git-tools.visualstudio.com";
 
             InitializeTest();
 
@@ -289,7 +289,7 @@ namespace Microsoft.Alm.Cli.Test
         public void InteractiveMsaLogon_Success()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/gistofj";
+            const string host = "dev-x.visualstudio.com";
 
             InitializeTest();
 
@@ -335,7 +335,7 @@ namespace Microsoft.Alm.Cli.Test
         public void InteractiveMsaLogonWithRevokedCredentials_Success()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/gistofj";
+            const string host = "dev-x.visualstudio.com";
 
             InitializeTest();
 
@@ -381,7 +381,7 @@ namespace Microsoft.Alm.Cli.Test
         public void NoninteractiveAadLogon_Success()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/microsoft-git-tools";
+            const string host = "microsoft-git-tools.visualstudio.com";
 
             InitializeTest();
 
@@ -427,7 +427,7 @@ namespace Microsoft.Alm.Cli.Test
         public void NoninteractiveAadWithRevokedCredentials_Success()
         {
             const string protocol = "https";
-            const string host = "dev.azure.com/microsoft-git-tools";
+            const string host = "microsoft-git-tools.visualstudio.com";
 
             InitializeTest();
 
